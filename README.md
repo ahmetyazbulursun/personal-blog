@@ -1,8 +1,8 @@
 ## Templates Used In This Project
-### Main Templates
+### Main Template
 https://themewagon.com/themes/free-html5-personal-blog-website-template-wordify/
 
-### Admin Panel Templates
+### Admin Panel Template
 https://themelock.com/htmlarchive/687027299-mooli-v10-laravel-html-admin-dashboard-template-with-bootstrap.html
 
 ## To Begin
