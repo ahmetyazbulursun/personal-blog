@@ -1,0 +1,24 @@
+﻿@using personal_blog.Models
+@model List<Post>
+
+<div class="sidebar-box">
+    <h3 class="heading">Popular Posts</h3>
+    <div class="post-entry-sidebar">
+        <ul>
+            @foreach (var x in Model)
+            {
+                <li>
+                    <a href="/Post/PostDetails/@x.ID">
+                        <img src="@x.Image" alt="image" class="mr-4 shadow">
+                        <div class="text">
+                            <h4>@x.Header</h4>
+                            <div class="post-meta">
+                                <span class="mr-2">@(((DateTime)x.Date).ToString("dd'/'MM'/'yyyy"))</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@using personal_blog.Models
+@model List<Post>
+
+@foreach (var x in Model)
+{
+    <img src="@x.Image" alt="image" class="img-fluid my-5">
+    <div class="post-meta">
+        <span class="author mr-2"><img src="@x.Author.Image" alt="image" class="mr-2"> @x.Author.Fullname</span>&bullet;
+        <span class="mr-2">@(((DateTime)x.Date).ToString("dd'/'MM'/'yyyy")) </span> &bullet;
+        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+    </div>
+    <h1 class="mb-4">@x.Header</h1>
+    <a class="category mb-5" href="#">@x.Category.Name</a>
+
+    <div class="post-content-body">
+        <p>@Html.Raw(x.Details)</p>
+    </div>
+}

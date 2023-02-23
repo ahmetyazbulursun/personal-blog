@@ -1,0 +1,28 @@
+﻿@using personal_blog.Models
+@model List<About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-lg-8 main-content py-5">
+    <div class="row">
+        @foreach (var x in Model)
+        {
+            <div class="col-md-12">
+                <h2 class="mb-4">@x.Header</h2>
+                <p class="mb-5"><img src="~/Images/About/about.jpg" alt="image" class="img-fluid"></p>
+                <p>@x.Details</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+<script>
+    var about = document.getElementById('about');
+    about.classList.add('active');
+</script>

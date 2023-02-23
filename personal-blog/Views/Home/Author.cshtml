@@ -1,0 +1,17 @@
+﻿@using personal_blog.Models
+@model List<Author>
+
+<div class="sidebar-box">
+    <div class="bio text-center">
+        @foreach (var x in Model)
+        {
+            <img src="@x.Image" alt="image" class="img-fluid">
+            <div class="bio-body">
+                <h2>@x.Fullname</h2>
+                <p>@x.Details</p>
+                <p><a href="/About/Index" class="btn btn-primary btn-sm rounded">Read More</a></p>
+                @Html.Action("AuthorAccounts", "Home")
+            </div>
+        }
+    </div>
+</div>

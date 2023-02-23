@@ -1,0 +1,65 @@
+﻿@model personal_blog.Models.Comment
+
+@{
+    ViewBag.Title = "PostDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        @TempData["Status"]
+    }
+</style>
+
+<span id="result" class="d-none">@TempData["Result"]</span>
+
+<div class="col-md-12 col-lg-8 main-content">
+
+    @Html.Action("Content", "Post")
+
+    <div class="pt-5">
+        <h3 class="mb-5">@ViewBag.CommentCount Comments</h3>
+        @Html.Action("CommentList", "Post")
+
+        <div class="comment-form-wrap py-5">
+            <h3 class="mb-5">Leave a comment</h3>
+            @using (Html.BeginForm())
+            {
+                <form method="post" class="p-5 bg-light">
+                    <div class="form-group">
+                        <label for="name">Fullname *</label>
+                        @Html.TextBoxFor(x => x.Fullname, new { @class = "form-control", @placeholder = "Enter your fullname.." })
+                        @Html.ValidationMessageFor(x => x.Fullname, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="details">Message *</label>
+                        @Html.TextAreaFor(x => x.Details, new { @class = "form-control", @placeholder = "Enter your message..", @rows = "7" })
+                        @Html.ValidationMessageFor(x => x.Details, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Post Comment" class="btn btn-primary btn-lg btn-block">
+                    </div>
+                </form>
+            }
+        </div>
+
+    </div>
+
+    @Html.Action("PopularPostsByCategory", "Post")
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var result = $('#result').text();
+        if (result !== '') {
+            swal(
+                result,
+                '',
+                'success'
+            )
+        }
+    });
+</script>

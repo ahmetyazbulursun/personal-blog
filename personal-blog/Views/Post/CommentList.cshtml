@@ -1,0 +1,15 @@
+﻿@using personal_blog.Models
+@model List<Comment>
+
+<ul class="comment-list">
+    @foreach (var x in Model)
+    {
+        <li class="comment">
+            <div class="comment-body float-left">
+                <h3>@x.Fullname</h3>
+                <div class="meta">@(((DateTime)x.Date).ToString("dd'/'MM'/'yyyy"))</div>
+                <p>@x.Details</p>
+            </div>
+        </li>
+    }
+</ul>

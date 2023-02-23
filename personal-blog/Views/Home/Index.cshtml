@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Carousel", "Home")
+
+@Html.Action("LatestPost", "Home")
+
+
+
+<script>
+    var home = document.getElementById('home');
+    home.classList.add('active');
+</script>

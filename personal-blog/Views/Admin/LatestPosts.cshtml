@@ -1,0 +1,31 @@
+﻿@using personal_blog.Models
+@model List<Post>
+
+<div class="row mb-3">
+    <h3 class="col text-center">Latest 3 Posts</h3>
+</div>
+
+<div class="row">
+    @foreach (var x in Model)
+    {
+            <div class="msg col-12 mb-4" style="cursor: pointer;">
+                <a href="/Admin/PostDetails/@x.ID">
+
+                    <article class="media mb-0">
+                        <div class="mr-3">
+                            <img class="img-fluid rounded shadow" width="100" src="@x.Image" alt="image">
+                        </div>
+                        <div class="media-body">
+                            <div class="content">
+                                <p class="h5 text-dark">@x.Header <small class="float-right text-muted font-15">@(((DateTime)x.Date).ToString("dd'/'MM'/'yyyy"))</small></p>
+                            </div>
+                            <nav class="d-flex text-muted font-13">
+                                <span class="text-muted ml-auto font-15">@x.Category.Name</span>
+                            </nav>
+                        </div>
+                    </article>
+                </a>
+
+            </div>
+    }
+</div>

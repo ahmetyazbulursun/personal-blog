@@ -1,0 +1,12 @@
+﻿@using personal_blog.Models
+@model List<Category>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+    <div class="dropdown-menu" aria-labelledby="dropdown05">
+        @foreach (var x in Model)
+        {
+            <a class="dropdown-item" href="/Category/Posts/@x.ID">@x.Name</a>
+        }
+    </div>
+</li>

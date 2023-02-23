@@ -1,0 +1,28 @@
+﻿@model personal_blog.Models.Account
+
+@{
+    ViewBag.Title = "NewAccount";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">New Account</h3>
+</div>
+
+<form class="form-control" method="post" enctype="multipart/form-data">
+    <div class="row mb-3">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <label class="form-label">Account</label>
+            @Html.DropDownListFor(x => x.IconID, (List<SelectListItem>)ViewBag.Icon, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <label class="form-label">Link</label>
+            @Html.TextBoxFor(x => x.Link, new { @class = "form-control", @placeholder = "Link.." })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <button type="submit" class="btn btn-info btn-lg btn-block"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+</form>

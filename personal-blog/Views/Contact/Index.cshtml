@@ -1,0 +1,68 @@
+﻿@model personal_blog.Models.Message
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<span id="result" class="d-none">@TempData["Result"]</span>
+
+<div class="col-md-12 col-lg-8 main-content mt-5">
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1>Contact Me</h1>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+    {
+        <form method="post">
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="name">Fullname</label>
+                    @Html.TextBoxFor(x => x.Fullname, new { @class = "form-control", @placeholder = "Enter your fullname.." })
+                    @Html.ValidationMessageFor(x => x.Fullname, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-12 form-group">
+                    <label for="phone">E-Mail</label>
+                    @Html.TextBoxFor(x => x.EMail, new { @class = "form-control", @placeholder = "Enter your e-mail.." })
+                    @Html.ValidationMessageFor(x => x.EMail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="message">Message</label>
+                    @Html.TextAreaFor(x => x.Details, new { @class = "form-control", @placeholder = "Enter your message..", @rows = "7" })
+                    @Html.ValidationMessageFor(x => x.Details, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 form-group">
+                    <input id="sweetAlert" type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
+                </div>
+            </div>
+        </form>
+    }
+
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    var contact = document.getElementById('contact');
+    contact.classList.add('active');
+
+    $(document).ready(function () {
+        var result = $('#result').text();
+        if (result !== '') {
+            swal(
+                result,
+                '',
+                'success'
+            )
+        }
+    });
+
+</script>

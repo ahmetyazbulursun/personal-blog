@@ -1,0 +1,25 @@
+﻿@model personal_blog.Models.Category
+
+@{
+    ViewBag.Title = "NewCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">New Category</h3>
+</div>
+
+<form class="form-control" method="post" enctype="multipart/form-data">
+    <div class="row mb-3">
+        <div class="col-12">
+            <label class="form-label">Name</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Name.." })
+            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <button type="submit" class="btn btn-info btn-lg btn-block"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+</form>

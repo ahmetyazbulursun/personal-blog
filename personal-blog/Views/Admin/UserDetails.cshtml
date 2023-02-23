@@ -1,0 +1,37 @@
+﻿@using personal_blog.Models
+@model List<User>
+
+@{
+    ViewBag.Title = "UserDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">User Details</h3>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="text-center" style="border-bottom: 2px solid gray;">
+            <tr>
+                <th class="font-weight-bold text-center">Username</th>
+                <th class="font-weight-bold text-center">Pasword</th>
+                <th class="font-weight-bold text-center">Operations</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td class="text-center">@x.Username</td>
+                    <td class="text-center">@x.Password</td>
+                    <td class="text-center">
+                        <ul class="p-0 m-0">
+                            <li class="d-inline px-2"><a href="/Admin/EditUser/@x.ID" title="Edit" class="text-success"><i class="fa fa-edit" style="font-size: 22px;"></i></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

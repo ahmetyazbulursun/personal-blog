@@ -1,0 +1,152 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Admin - Personal Blog</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Boyut Endüstriyel Stok Yönetim Paneli">
+    <meta name="author" content="Boyut Endüstriyel">
+
+    <link rel="icon" href="~/Templates/admin-template/logo.ico" type="image/x-icon">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="/Templates/admin-template/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Templates/admin-template/assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Templates/admin-template/assets/vendor/animate-css/vivify.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/Templates/admin-template/assets/css/mooli.min.css">
+
+</head>
+<body>
+
+    <div id="body" class="theme-cyan">
+
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+
+        <div id="wrapper">
+
+            <!-- Page top navbar -->
+            <nav class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-left">
+                        <div class="navbar-btn">
+                            <a href="/Beyanname/Index">@*<img src="~/Templates/admin-template/kaptan-logo-removebg-preview.png" alt="logo" class="img-fluid logo">*@</a>
+                            <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
+                        </div>
+                        <form id="navbar-search" class="navbar-form search-form">
+                            <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            <input value="" class="form-control" placeholder="Ara..." type="text">
+                        </form>
+                    </div>
+                    <div class="navbar-right">
+                        <div id="navbar-menu">
+                            <ul class="nav navbar-nav">
+                                <li class="hidden-xs" style="display: none;"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mr-2">
+                            <span id="clock" class="align-items-center"></span>
+                        </div>
+                        <a href="/Admin/UserDetails/@Session["UserId"]" title="Menüye Dön" class="text-dark font-20 mx-3"><i class="fa fa-user"></i></a>
+                        <a href="/Login/SignOut" title="Menüye Dön" class="text-dark font-20"><i class="fa fa-sign-out"></i></a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main left sidebar menu -->
+            <div id="left-sidebar" class="sidebar">
+                <div class="navbar-brand text-center">
+                    <a href="/Admin/Index">@*<img src="~/Templates/admin-template/kaptan-logo-layout.png" alt="Mooli Logo" class="img-fluid logo">*@<span>Personal Blog</span></a>
+                    <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
+                </div>
+                <div class="sidebar-scroll">
+                    <nav id="left-sidebar-nav" class="sidebar-nav">
+                        <ul id="main-menu" class="metismenu animation-li-delay">
+
+                            <li class="header text-center pb-3">MENÜ</li>
+
+                            <li><a href="/Admin/Index"><i class="fa fa-home"></i> <span>Home</span> </a></li>
+
+                            <li class="mb-2">
+                                <a href="" class="has-arrow"><i class="fa fa-pencil-square-o"></i><span>Post</span></a>
+                                <ul>
+                                    <li><a href="/Admin/Posts">Posts</a></li>
+                                    <li><a href="/Admin/Categories">Categories</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="mb-2">
+                                <a href="" class="has-arrow"><i class="fa fa-file"></i><span>Pages &amp; Cards</span></a>
+                                <ul>
+                                    <li><a href="/Admin/About">About</a></li>
+                                    <li><a href="/Admin/Author">Author</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="mb-2">
+                                <a href="" class="has-arrow"><i class="fa fa-th-large"></i><span>Other</span></a>
+                                <ul>
+                                    <li><a href="/Admin/Messages">Messages</a></li>
+                                    <li><a href="/Admin/Accounts">Accounts</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main body part  -->
+            <div id="main-content">
+                <div class="container-fluid">
+                    <div class="row clearfix">
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card planned_task">
+                                <div class="header">
+                                    <ul class="header-dropdown dropdown">
+                                        <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="body">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Javascript -->
+    <script src="/Templates/admin-template/assets/bundles/libscripts.bundle.js"></script>
+    <script src="/Templates/admin-template/assets/bundles/vendorscripts.bundle.js"></script>
+
+    <!-- Vedor js file and create bundle with grunt  -->
+    <!-- Project core js file minify with grunt -->
+    <script src="/Templates/admin-template/assets/bundles/mainscripts.bundle.js"></script>
+
+    <script>
+
+        function clock() {
+            var clock = document.getElementById('clock');
+            clock.innerText = new Date().toLocaleString();
+        }
+
+        setInterval(clock, 1000);
+
+    </script>
+
+</body>
+</html>

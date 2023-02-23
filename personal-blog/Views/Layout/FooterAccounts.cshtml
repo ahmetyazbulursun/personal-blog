@@ -1,0 +1,12 @@
+﻿@using personal_blog.Models
+@model List<Account>
+
+<div class="mb-5">
+    <h3>Social</h3>
+    <ul class="list-unstyled footer-social">
+        @foreach (var x in Model)
+        {
+            <li><a href="@x.Link" target="_blank" rel="nofollow"><span class="@x.Icon.IconText"></span> @x.Icon.IconName</a></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,14 @@
+﻿@using personal_blog.Models
+@model List<About>
+
+<div class="col-md-4 mb-5">
+    <h3>About Us</h3>
+    @foreach (var x in Model)
+    {
+        <p class="mb-4">
+            <img src="@x.Image" alt="image" class="img-fluid">
+        </p>
+
+        <p>@x.Details</p>
+    }
+</div>

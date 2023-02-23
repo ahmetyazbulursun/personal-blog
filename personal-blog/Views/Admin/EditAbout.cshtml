@@ -1,0 +1,36 @@
+﻿@model personal_blog.Models.About
+
+@{
+    ViewBag.Title = "EditAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">Edit Post</h3>
+</div>
+
+<form class="form-control" method="post" enctype="multipart/form-data">
+    <div class="row mb-3">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <label class="form-label">Header</label>
+            @Html.TextBoxFor(x => x.Header, new { @class = "form-control", @placeholder = "Header.." })
+            @Html.ValidationMessageFor(x => x.Header, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <label class="form-label">Image</label>
+            <input type="file" class="form-control" name="Image" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <label class="form-label">Details</label>
+            @Html.ValidationMessageFor(x => x.Details, "", new { @class = "text-danger" })
+            @Html.TextAreaFor(x => x.Details, new { @id = "content", @class = "form-control", @rows = "7" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success btn-lg btn-block" title="Edit"><i class="fa fa-edit"></i></button>
+        </div>
+    </div>
+</form>

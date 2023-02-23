@@ -1,0 +1,39 @@
+﻿@using personal_blog.Models
+@model List<Comment>
+
+@{
+    ViewBag.Title = "Comments";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">Comments On This Post</h3>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="text-center" style="border-bottom: 2px solid gray;">
+            <tr>
+                <th class="font-weight-bold text-center">Fullname</th>
+                <th class="font-weight-bold text-center">Comment</th>
+                <th class="font-weight-bold text-center">Date</th>
+                <th class="font-weight-bold text-center">Operations</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td class="text-center">@x.Fullname</td>
+                    <td class="text-center">@x.Details</td>
+                    <td class="text-center">@(((DateTime)x.Date).ToString("dd'/'MM'/'yyyy"))</td>
+                    <td class="text-center">
+                        <ul class="p-0 m-0">
+                            <li class="d-inline px-2">@Html.ActionLink(" ", "DeleteComment", new { id = x.ID }, new { @class = "text-danger fa fa-trash", @title = "Delete", @style = "font-size: 22px;", onclick = "return confirm('Are You Sure You Want To Delete It?')" })</li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

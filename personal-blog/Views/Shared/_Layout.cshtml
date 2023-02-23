@@ -1,0 +1,172 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>Personal Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Templates/template/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Templates/template/css/animate.css">
+    <link rel="stylesheet" href="~/Templates/template/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="~/Templates/template/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Templates/template/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Templates/template/fonts/flaticon/font/flaticon.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="~/Templates/template/css/style.css">
+
+    <style>
+        .active {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="wrap">
+
+        <header role="banner">
+            <div class="top-bar">
+                <div class="container">
+                    <div class="row">
+                        @Html.Action("NavbarAccounts", "Layout")
+                        <div class="col-3 search-top">
+                            <!-- <a href="#"><span class="fa fa-search"></span></a> -->
+                            <form action="/Home/Index" class="search-top-form">
+                                <span class="icon fa fa-search"></span>
+                                <input type="text" id="s" name="search" placeholder="Search posts.." >
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container logo-wrap">
+                <div class="row pt-5">
+                    <div class="col-12 text-center">
+                        <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
+                        <h1 class="site-logo"><a href="/Home/Index">Personal Blog</a></h1>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand-md  navbar-light bg-light">
+                <div class="container">
+
+
+                    <div class="collapse navbar-collapse" id="navbarMenu">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a id="home" class="nav-link" href="/Home/Index">Home</a>
+                            </li>
+                            @Html.Action("NavbarCategories", "Layout")
+                            <li class="nav-item">
+                                <a id="about" class="nav-link" href="/About/Index">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="contact" class="nav-link" href="/Contact/Index">Contact</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- END header -->
+        <!-- END section -->
+
+        <section class="site-section py-sm">
+            <div class="container">
+                <div class="row blog-entries">
+
+                    @RenderBody()
+
+                    <!-- END main-content -->
+
+                    <div class="col-md-12 col-lg-4 sidebar py-5">
+                        <div class="sidebar-box search-form-wrap">
+                            <form action="/Home/Index" class="search-form">
+                                <div class="form-group">
+                                    <span class="icon fa fa-search"></span>
+                                    <input type="text" class="form-control" name="search" id="s" placeholder="Search posts..">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- END sidebar-box -->
+
+                        @Html.Action("Author", "Home")
+
+                        <!-- END sidebar-box -->
+
+                        @Html.Action("PopularPosts", "Home")
+
+                        <!-- END sidebar-box -->
+
+                        @Html.Action("Categories", "Home")
+
+                        <!-- END sidebar-box -->
+
+                    </div>
+                    <!-- END sidebar -->
+
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row mb-5 justify-content-between">
+                    @Html.Action("FooterAboutUs", "Layout")
+                    <div class="col-md-6">
+                        <div class="row">
+                            @Html.Action("FooterLatestPosts", "Layout")
+                            <div class="col-md-1"></div>
+
+                            <div class="col-md-4">
+
+                                <div class="mb-5">
+                                    <h3>Quick Links</h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/Home/Index">Home</a></li>
+                                        <li><a href="/About/Index">About</a></li>
+                                        <li><a href="/Contact/Index">Contact</a></li>
+                                    </ul>
+                                </div>
+
+                                @Html.Action("FooterAccounts", "Layout")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="small">
+                            &copy; @DateTime.Now.Year | Develop by <a href="https://www.ahmetyazbulursun.com" target="_blank" rel="noreferrer">Ahmet Hakan Eroglu</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END footer -->
+
+    </div>
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214" /></svg></div>
+
+    <script src="~/Templates/template/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Templates/template/js/jquery-migrate-3.0.0.js"></script>
+    <script src="~/Templates/template/js/popper.min.js"></script>
+    <script src="~/Templates/template/js/bootstrap.min.js"></script>
+    <script src="~/Templates/template/js/owl.carousel.min.js"></script>
+    <script src="~/Templates/template/js/jquery.waypoints.min.js"></script>
+    <script src="~/Templates/template/js/jquery.stellar.min.js"></script>
+
+
+    <script src="~/Templates/template/js/main.js"></script>
+</body>
+</html>

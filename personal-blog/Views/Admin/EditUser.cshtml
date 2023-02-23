@@ -1,0 +1,30 @@
+﻿@model personal_blog.Models.User
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">Edit User</h3>
+</div>
+
+<form class="form-control" method="post" enctype="multipart/form-data">
+    <div class="row mb-3">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <label class="form-label">Username</label>
+            @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @placeholder = "Username.." })
+            @Html.ValidationMessageFor(x => x.Username, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <label class="form-label">Password</label>
+            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Password.." })
+            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fa fa-edit"></i></button>
+        </div>
+    </div>
+</form>

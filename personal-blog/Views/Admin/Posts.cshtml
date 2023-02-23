@@ -1,0 +1,52 @@
+﻿@using personal_blog.Models
+@model List<Post>
+
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <h3 class="col text-center">Posts</h3>
+</div>
+<div class="row mb-3">
+    <div class="col d-flex justify-content-between">
+        <a href="/Admin/NewPost" class="px-2 py-1 text-info rounded-circle" style="background-color: #e9e9e9;" title="New Post"><i class="fa fa-plus"></i></a>
+        <a href="/Admin/AllComments" class="px-2 py-1 text-warning rounded-circle" style="background-color: #e9e9e9;" title="All Comments"><i class="fa fa-comments"></i></a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="text-center" style="border-bottom: 2px solid gray;">
+            <tr>
+                <th class="font-weight-bold text-center">Image</th>
+                <th class="font-weight-bold text-center">Header</th>
+                <th class="font-weight-bold text-center">Category</th>
+                <th class="font-weight-bold text-center">Click Count</th>
+                <th class="font-weight-bold text-center">Date</th>
+                <th class="font-weight-bold text-center">Operations</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td class="text-center"><img src="@x.Image" class="img-fluid" /></td>
+                    <td class="text-center">@x.Header</td>
+                    <td class="text-center">@x.Category.Name</td>
+                    <td class="text-center">@x.ClickCount</td>
+                    <td class="text-center">@(((DateTime)x.Date).ToString("dd'/'MM'/'yyyy"))</td>
+                    <td class="text-center">
+                        <ul class="p-0 m-0">
+                            <li class="d-inline px-2"><a href="/Admin/PostDetails/@x.ID" title="Details" class="text-primary"><i class="fa fa-info-circle" style="font-size: 22px;"></i></a></li>
+                            <li class="d-inline px-2"><a href="/Admin/Comments/@x.ID" title="Comments" class="text-warning"><i class="fa fa-comment" style="font-size: 22px;"></i></a></li>
+                            <li class="d-inline px-2"><a href="/Admin/EditPost/@x.ID" title="Edit" class="text-success"><i class="fa fa-edit" style="font-size: 22px;"></i></a></li>
+                            <li class="d-inline px-2">@Html.ActionLink(" ", "DeletePost", new { id = x.ID }, new { @class = "text-danger fa fa-trash", @title = "Delete", @style = "font-size: 22px;", onclick = "return confirm('Are You Sure You Want To Delete It?')" })</li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

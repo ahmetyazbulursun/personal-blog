@@ -1,0 +1,9 @@
+﻿@using personal_blog.Models
+@model List<Account>
+
+<div class="col-9 social">
+    @foreach (var x in Model)
+    {
+        <a href="@x.Link" target="_blank" rel="nofollow"><span class="@x.Icon.IconText"></span></a>
+    }
+</div>
